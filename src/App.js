@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import VideosTable from './components/VideosTable';
 import { Container } from '@material-ui/core';
 import VideosContext from './context/VideosContext';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from "./routing/Routes";
 
 const list = [
     { 
@@ -19,13 +20,15 @@ const list = [
 
 function App() {
     return (
-        <div className="App">
-            <Container maxWidth="md">
-                <VideosContext.Provider value={{list: list}}>
-                    <VideosTable />
-                </VideosContext.Provider>
-            </Container>
-        </div>
+        <Router>
+            <div className="App">
+                <Container maxWidth="md">
+                    <VideosContext.Provider value={{list: list}}>
+                        <Routes/>
+                    </VideosContext.Provider>
+                </Container>
+            </div>
+        </Router>
     );
 }
 
